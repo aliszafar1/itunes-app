@@ -1,3 +1,3 @@
 import { combineEpics } from "redux-observable";
-
-export default combineEpics();
+import ArtistsAlbumsEpics from './artisits-album/epic';
+export default combineEpics(...ArtistsAlbumsEpics);
