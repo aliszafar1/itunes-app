@@ -9,9 +9,9 @@ const GettingArtistsAlbumsListEpic: Epic = (action$) => {
     return action$.pipe(
         ofType(GETTING_ALBUMS_OF_ARTIST),
         mergeMap(({payload}) => {
-            return GetArtistsAlbumsListService(payload.artistToSearch, 5).pipe(
+            return GetArtistsAlbumsListService(payload.searchFieldInput).pipe(
                 map(response => ({type:GETTING_ALBUMS_OF_ARTIST_SUCCESS, payload: (response as any).data.results })),
-                catchError(error => of({type: GETTING_ALBUMS_OF_ARTIST_FAILURE, payload: error}))
+                catchError(error => of({type: GETTING_ALBUMS_OF_ARTIST_FAILURE, payload: error.toString()}))
             )
         })
     )

@@ -1,18 +1,28 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import {Link, withRouter} from 'react-router-dom';
 import { gettingAlbumsOfArtitst } from '../../store/artisits-album/actions';
+import { setSingleArtistName } from '../../store/favourite-albums/actions';
 import './styles.css';
 
-export default function(){
-    const [artistToSearch, setArtistToSearch] = useState('');
+function Header(props: any){
     const dispatch = useDispatch();
+    const [searchFieldInput, setSearchItem] = useState('');
+    const isFavouriteAlbumRoute = props.location.pathname === "/favourite-albums";
+    const placeholder = isFavouriteAlbumRoute ? 'Get album of particular artist' : "Please enter artist's name";
 
     const onInputTextChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        setArtistToSearch(event.target.value);
+        setSearchItem(event.target.value);
     }
     const handleFormSubmit = (event:React.FormEvent) => {
+        if(searchFieldInput.length){
+            if(isFavouriteAlbumRoute){
+                dispatch(setSingleArtistName(searchFieldInput));
+            } else {
+                dispatch(gettingAlbumsOfArtitst({searchFieldInput}));
+            }
+        }
         event.preventDefault();
-        dispatch(gettingAlbumsOfArtitst({artistToSearch}));
       }
     return (
         <div className="header-container">
@@ -20,13 +30,15 @@ export default function(){
             <form onSubmit={handleFormSubmit}>
                     <input type="text"
                     className="search" 
-                    placeholder="Please enter artist's name"
+                    placeholder={placeholder}
                     onChange={onInputTextChange} />
             </form>
             <ul className="routes-list">
-                <li><a className="route-link" href="/">Home</a></li>
-                <li><a className="route-link" href="/favourite-albums">Favourite Albums</a></li>
+                <li><Link className="route-link" to="/">Home</Link></li>
+                <li><Link className="route-link" to="/favourite-albums">Favourite Albums</Link></li>
             </ul>
         </div>
     )
 }
+
+export default withRouter(Header);

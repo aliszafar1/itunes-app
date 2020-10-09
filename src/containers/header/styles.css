@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 25px 5px;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .heading-logo{
@@ -15,10 +18,14 @@
   list-style-type: none;
   display: flex;
   flex-direction: row;
+  padding: 0;
 }
 
 .route-link{
-  margin: 0 5px;
+  margin-right: 5px;
+  color: #575756;
+  letter-spacing: 2px;
+  text-decoration: none;
 }
 
 .search {

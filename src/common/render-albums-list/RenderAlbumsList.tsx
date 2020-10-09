@@ -18,7 +18,7 @@ export default function (props: any) {
          const favBtnPlaceholder = isArtistInFavouriteList ? 'Delete' : 'Fav';
             return (
                 <li className="list-container" key={index}>
-                    <AlbumDetails album={album} favBtnPlaceholder={favBtnPlaceholder} onClick={onClickFav} isArtistInFavouriteList={isArtistInFavouriteList} />
+                    <AlbumDetails album={album} favBtnPlaceholder={favBtnPlaceholder} onClick={onClickFav} isArtistInFavouriteList={isArtistInFavouriteList}  isItemFavourite={isArtistInFavouriteList}/>
              </li>
          )
       })

@@ -7,7 +7,6 @@ import './styles.css';
 import RenderAlbumsList from '../../common/render-albums-list/RenderAlbumsList';
 
 export default function (){
-    // Fix proper typing issues
     const {isGettingAlbum,albums,apiError } = useSelector<RootReducerInterface, any>(state => (state as any).ArtistsAlbumsReducer);
     const {favouriteAlbum} = useSelector<RootReducerInterface, any>(state => (state as any).FavouriteAlbumsReducer);
     const dispatch = useDispatch();
@@ -21,10 +20,10 @@ export default function (){
     }
 
     if(isGettingAlbum){
-        return <p>Loading</p>
-    } else if (albums.lenggth){
+        return <p className="search-artist-instruction">Loading...</p>
+    } else if (albums.length){
         return <RenderAlbumsList albums={albums} favouriteAlbumList={favouriteAlbum} onClickFav={onClickFav} />
     } else if(apiError) {
-       return <p>Api Error</p>
-    } else return <p>Error Loading Component</p>;
+       return <p className="search-artist-instruction">{apiError}</p>
+    } else return <p className="search-artist-instruction">Lets search more about your favourite artist</p>;
 }

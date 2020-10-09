@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../button/Button';
+import FavouriteIcon from '../favourite-icon/FavouriteIcon';
 import './styles.css'
 interface abc {
     album: any;
@@ -7,14 +8,16 @@ interface abc {
       isArtistInFavouriteList:boolean;
       onClick: any ;
 
+      isItemFavourite: boolean;
 }
 
 export default function (props: abc) {
     const {artistName, collectionName, artworkUrl100, primaryGenreName, collectionId} = props.album;
+    const style = {'width': 30, position: 'absolute', 'margin-left': 130, 'margin-top': 5, 'z-index':'10000', cursor:'pointer'}
     return (
         <div className="album-container">
             <>
-            <Button placeholderText={props.favBtnPlaceholder} onClick={() => props.onClick(props.isArtistInFavouriteList, {artistName, collectionName, artworkUrl100, primaryGenreName, collectionId})}/>
+            <FavouriteIcon isItemFavourite={props.isItemFavourite} onClick={() => props.onClick(props.isArtistInFavouriteList, {artistName, collectionName, artworkUrl100, primaryGenreName, collectionId})} style={style}/>
             <img src={artworkUrl100} alt={collectionName} className="background-img"></img>
             <img src={artworkUrl100} alt={collectionName} className="foreground-img"></img>
             </>
