@@ -1,0 +1,10 @@
+.albums-list{
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    flex-wrap: wrap;
+}
+
+.list-container{
+    list-style-type: none;
+}
