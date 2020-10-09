@@ -13,7 +13,7 @@ interface abc {
 
 export default function (props: abc) {
     const {artistName, collectionName, artworkUrl100, primaryGenreName, collectionId} = props.album;
-    const style = {'width': 30, position: 'absolute', 'margin-left': 130, 'margin-top': 5, 'z-index':'10000', cursor:'pointer'}
+    const style = {'width': 30, position: 'absolute', 'marginLeft': 130, 'marginTop': 5, 'zIndex':'10000', cursor:'pointer'}
     return (
         <div className="album-container">
             <>

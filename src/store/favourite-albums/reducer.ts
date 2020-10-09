@@ -1,4 +1,4 @@
-import {ADD_ALBUM_TO_FAVOURITE, DELETE_ALBUM_FROM_FAVOURITE, RESET_FAVOURITE_ALBUM_LIST, SET_SINGLE_ARTIST_NAME} from './ constants';
+import {ADD_ALBUM_TO_FAVOURITE, DELETE_ALBUM_FROM_FAVOURITE, RESET_FAVOURITE_ALBUM_LIST, RESET_SINGLE_ARTIST_NAME, SET_SINGLE_ARTIST_NAME} from './ constants';
 
 export interface FavouriteAlbumListInterface {
     favouriteAlbum: Array<ArtistsDetailsInterface>;
@@ -34,6 +34,8 @@ const FavouriteAlbumsReducer = <T>(state : FavouriteAlbumListInterface = initial
             return state;
         case SET_SINGLE_ARTIST_NAME:
             return {...state, singleArtist: payload}
+        case RESET_SINGLE_ARTIST_NAME:
+            return {...state, singleArtist: ''}
         default:
             return state;
     }
