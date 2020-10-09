@@ -20,5 +20,11 @@ export default function (){
         }
     }
 
-    return <RenderAlbumsList albums={albums} favouriteAlbumList={favouriteAlbum} onClickFav={onClickFav} />
+    if(isGettingAlbum){
+        return <p>Loading</p>
+    } else if (albums.lenggth){
+        return <RenderAlbumsList albums={albums} favouriteAlbumList={favouriteAlbum} onClickFav={onClickFav} />
+    } else if(apiError) {
+       return <p>Api Error</p>
+    } else return <p>Error Loading Component</p>;
 }

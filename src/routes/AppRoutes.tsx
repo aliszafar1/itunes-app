@@ -3,7 +3,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
   } from "react-router-dom";
   import SearchedArtistList from '../containers/search-artist/SearchArtist';
   import FavouriteAlbumsList from '../containers/favourite-albums/FavouriteAlbums';

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { gettingAlbumsOfArtitst } from '../../store/artisits-album/actions';
 import './styles.css';
-import history from 'history'
 
 export default function(){
     const [artistToSearch, setArtistToSearch] = useState('');
@@ -15,7 +14,6 @@ export default function(){
         event.preventDefault();
         dispatch(gettingAlbumsOfArtitst({artistToSearch}));
       }
-console.log(history);
     return (
         <div className="header-container">
             <h1 className="heading-logo">Artisio</h1>

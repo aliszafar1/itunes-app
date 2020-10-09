@@ -6,11 +6,9 @@ import { ArtistsDetailsInterface } from '../../store/favourite-albums/reducer';
 import {RootReducerInterface} from '../../store/root-reducer';
 
 export default function () {
-    const {isGettingAlbum,albums,apiError } = useSelector<RootReducerInterface, any>(state => (state as any).ArtistsAlbumsReducer);
     const {favouriteAlbum} = useSelector<RootReducerInterface, any>(state => (state as any).FavouriteAlbumsReducer);
 
     const dispatch = useDispatch();
-
     const onClickFav= (isArtistInFavouriteList:boolean, payload: ArtistsDetailsInterface) => {
         if(isArtistInFavouriteList){
             dispatch(deleteArtistFromFavourite(payload.collectionId));
