@@ -2,12 +2,6 @@ import React from 'react';
 import { ArtistsDetailsInterface } from '../../store/favourite-albums/reducer';
 import AlbumDetails from '../album-details/AlbumDetails';
 import './styles.css';
-interface RenderAlbumsDetailsListInterface {
-    albums: [];
-    favouriteAlbumList: [];
-    onClickFav: any;
-}
-
 
 export default function (props: any) {
     const {albums, favouriteAlbumList, onClickFav} = props;

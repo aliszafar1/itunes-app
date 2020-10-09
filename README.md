@@ -9,36 +9,15 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Details
+1. This project is displaying the albums based on letters containing in the search field, in the response of iTunes API.
+2. In the home screen it will show you on the top right side two navigation options.
+    - Navigation is created using React-Router Library.
+3. In the Home screen it will display all the albums based on search, & user can click on star icon to add & remove an album in to the favourite list. (Using Toggling effect of Empty & Red Color Star).
+4. If user add an item into favourite, it could also see all the those items into Favourite Route (/favourite-albums).
+5. Suppose if user remove any album from favourite list from any screen, it would reflect out in both screen.
+6. A shared header based search bar is used by which user can get albums from API response in Home Route as well as it can filter out albums based on Aritsts Name (Fullname should be entred).
+7. If API response gets error so it would also be shown. (User can create mock error by entering "wrong" keyword in the end of url to file ./src/services/getArtistAlbums)
+8. Two types of directories are created for React Component, one is container which communicates with Redux & has implemented logic code base. Other are situated in common folder which only show results based on its input, these are reusable. e.g. Album Details, Favourite Icon
+9. If API does not respond in a "n" amount of time it can retry for "m" amount of time. Those configuration could be change in ./src/config/AppConfig. That would reflect inside ./src/store/artist/album/epic.
+10. For styling flex-box approach is used.
