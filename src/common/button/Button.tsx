@@ -7,6 +7,7 @@ interface ButtonProps {
     isLoaderEnabled ?: boolean;
     disabled ?: boolean;
     loaderVisibility ?: boolean;
+    onClick ?: {(event: any): any | null};
 }
 
  const submitBtnPlaceholder = (placeholderText: string, loaderVisibility: boolean | undefined) => {
@@ -17,6 +18,6 @@ interface ButtonProps {
 }
 
 export default function (props:  ButtonProps) {
-    const {disabled, placeholderText, loaderVisibility} = props;
-    return  <button className="btn" disabled={disabled}>{submitBtnPlaceholder(placeholderText, loaderVisibility)}</button>;
+    const {disabled, placeholderText, loaderVisibility, onClick} = props;
+    return  <button className="btn"  disabled={disabled} onClick={onClick}>{submitBtnPlaceholder(placeholderText, loaderVisibility)}</button>;
 }

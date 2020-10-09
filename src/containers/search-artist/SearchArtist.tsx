@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import { gettingAlbumsOfArtitst } from '../../store/artisits-album/actions';
+import { addArtistToFavourite, deleteArtistFromFavourite } from '../../store/favourite-artists/actions';
+import { ArtistsDetailsInterface } from '../../store/favourite-artists/reducer';
 import {RootReducerInterface} from '../../store/root-reducer';
 import Button from '../../common/button/Button';
 import './styles.css';
@@ -10,6 +12,8 @@ export default function (){
     const [artistToSearch, setArtistToSearch] = useState('');
     // Fix proper typing issues
     const {isGettingAlbum,albums,apiError } = useSelector<RootReducerInterface, any>(state => (state as any).ArtistsAlbumsReducer);
+
+    const {favouriteArtist} = useSelector<RootReducerInterface, any>(state => (state as any).FavouriteArtistsReducer);
 
     const dispatch = useDispatch();
 
@@ -20,14 +24,24 @@ export default function (){
         event.preventDefault();
         dispatch(gettingAlbumsOfArtitst({artistToSearch}));
       }
+    const onClickFav= (isArtistInFavouriteList:boolean, payload: ArtistsDetailsInterface) => {
+        if(isArtistInFavouriteList){
+            dispatch(deleteArtistFromFavourite(payload.collectionId));
+        } else {
+            dispatch(addArtistToFavourite(payload));
+        }
+    }
 
       //Fix Type
     const renderAlbums = (albums: []): Array<any> => {
        return albums.map((album: any, index: number) => {
-        const {artistName, collectionName, artworkUrl100, primaryGenreName} = album;
+        const {artistName, collectionName, artworkUrl100, primaryGenreName, collectionId} = album;
+        const isArtistInFavouriteList: boolean = favouriteArtist.filter((artistDetails: ArtistsDetailsInterface) => artistDetails.collectionId === collectionId).length === 1;
+        const favBtnPlaceholder = isArtistInFavouriteList ? 'Delete' : 'Fav';
            return (
                <li className="album-container" key={index}>
                    <>
+                   <Button placeholderText={favBtnPlaceholder} onClick={() => onClickFav(isArtistInFavouriteList, {artistName, collectionName, artworkUrl100, primaryGenreName, collectionId})}/>
                    <img src={artworkUrl100} alt={collectionName} className="background-img"></img>
                    <img src={artworkUrl100} alt={collectionName} className="foreground-img"></img>
                    </>
